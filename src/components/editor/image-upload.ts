@@ -34,6 +34,8 @@ export const onUpload = (file: File) => {
           );
           // Unknown error
         } else {
+          console.log(res);
+
           throw new Error(`Error uploading image. Please try again.`);
         }
       }),

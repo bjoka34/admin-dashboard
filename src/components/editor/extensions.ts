@@ -10,6 +10,7 @@ import {
   AIHighlight,
 } from "novel/extensions";
 import { UploadImagesPlugin } from "novel/plugins";
+import Youtube from '@tiptap/extension-youtube';
 
 import { cx } from "class-variance-authority";
 
@@ -36,6 +37,10 @@ const tiptapImage = TiptapImage.extend({
   HTMLAttributes: {
     class: cx("rounded-lg border border-muted"),
   },
+});
+
+const tiptapYoutube = Youtube.configure({
+  // Optional: add your own configuration here
 });
 
 const updatedImage = UpdatedImage.configure({
@@ -114,4 +119,5 @@ export const defaultExtensions = [
   taskItem,
   horizontalRule,
   aiHighlight,
+  tiptapYoutube
 ];

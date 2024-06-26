@@ -7,9 +7,9 @@ import {
   ImageIcon,
   List,
   ListOrdered,
-  MessageSquarePlus,
   Text,
   TextQuote,
+  Youtube as YoutubeIcon,
 } from "lucide-react";
 import { createSuggestionItems } from "novel/extensions";
 import { Command, renderItems } from "novel/extensions";
@@ -141,7 +141,7 @@ export const suggestionItems = createSuggestionItems([
       };
       input.click();
     },
-  },
+  }
 ]);
 
 export const slashCommand = Command.configure({

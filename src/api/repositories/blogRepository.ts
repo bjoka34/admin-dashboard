@@ -1,22 +1,17 @@
 import { httpClient } from "../httpClient";
 
 export const getBlogs = async (categories: string, tags: string) => {
-    if (tags === 'all' && categories === "all") {
-        const response = await httpClient.get(
-            `/blogs`
-        );
-        return response;
-    } else {
-        const response = await httpClient.get(
-            `/posts?category=${categories}&tags=${tags}`
-        );
-        return response;
-    }
+
+    const response = await httpClient.get(
+        `/blogs?category=${categories}&tags=${tags}`
+    );
+    return response;
+
 };
 
 export const getBlogById = async (id: number) => {
     const response = await httpClient.get(
-        `/blogs/${id}`
+        `/blogs/edit/${id}`
     );
     return response;
 };

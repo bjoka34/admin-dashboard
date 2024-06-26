@@ -3,11 +3,10 @@ import { Fragment, useState } from 'react';
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
-import { categoriesType } from '@/app/blogs/add/page';
 
 interface Props {
-    setSelected: React.Dispatch<SetStateAction<categoriesType>>;
-    selected: categoriesType;
+    setSelected: React.Dispatch<SetStateAction<any>>;
+    selected: any;
     categories: any[];
 };
 
@@ -29,7 +28,7 @@ const Dropdown = ({ setSelected, selected, categories }: Props) => {
 
                         <Transition show={open} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
                             <ListboxOptions className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                {categories.map((category: categoriesType) => (
+                                {categories.map((category: any) => (
                                     <ListboxOption
                                         key={category.id}
                                         className={({ focus }) =>
