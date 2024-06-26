@@ -26,6 +26,8 @@ const LoginPage = () => {
       router.push('/dashboard');
     },
     onError: (error: any) => {
+      console.log(error);
+
       const errorMessage = error.response?.data?.message || 'Login failed';
       setLocalError(errorMessage);
       dispatch(setError(errorMessage));
