@@ -11,19 +11,21 @@ interface Props {
 };
 
 const DropdownRelated = ({ setSelected, selected, data }: Props) => {
-    console.log(data);
+    let parsedTitle: any;
 
-    const parsedTitle = data.length > 0 && JSON.parse(data[0].title);
+    if (data && data.length > 0) {
+        parsedTitle = JSON.parse(data[0].title);
 
+    }
     return (
         <div>
-            {data.length > 0 && <Listbox value={selected} onChange={setSelected}>
+            {data && data?.length > 0 && <Listbox value={selected} onChange={setSelected}>
                 {({ open }) => (
                     <>
                         <div className="relative mt-2">
                             <ListboxButton className="relative w-full cursor-default rounded-md bg-gray-50 py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 dark:bg-gray-700">
                                 <span className="flex items-center">
-                                    <span className="ml-3 block truncate dark:text-white">{parsedTitle[1]?.en}</span>
+                                    <span className="ml-3 block truncate dark:text-white">{parsedTitle?.[1]?.en}</span>
                                 </span>
                                 <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                                     <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
