@@ -4,8 +4,8 @@ import axios from 'axios';
 
 export const httpClient = axios.create({
     // baseURL: "https://qqriq-api.tfcapital.me/api",
-    // baseURL: "https://tfcapital-dev.qqriq.me/api",
-    baseURL: "http://localhost:5022/api",
+    baseURL: "https://api.meprogram.me/api",
+    // baseURL: "http://localhost:5022/api",
     headers: {
         'Content-Type': 'application/json',
     },
