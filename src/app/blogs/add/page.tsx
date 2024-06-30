@@ -124,8 +124,11 @@ const Page = (props: Props) => {
         if (!singleImage) {
             return;
         }
+        const title_me = formData.name_me.replace(/-/g, ' ');
+        const title_en = formData.name_en.replace(/-/g, ' ');
+
         const blogData = {
-            name: [{ me: formData.name_me }, { en: formData.name_en }],
+            name: [{ me: title_me }, { en: title_en }],
             video: formData.video,
             category: selected.name,
             about: selected.id,
