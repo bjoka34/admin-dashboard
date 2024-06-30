@@ -177,7 +177,7 @@ const Page = ({ params }: ProtectedPageProps) => {
     return (
         <div className='w-2/3 mx-auto mt-5 mb-[100px]'>
             <h1 className='text-center text-[24px] font-semibold'>Edit Blog</h1>
-            <form className='w-2/3 mx-auto mt-5 flex flex-col gap-5' onSubmit={handleSubmit}>
+            <div className='w-2/3 mx-auto mt-5 flex flex-col gap-5'>
                 <Input required={true} label={'Blog name ME'} inputName={'name_me'} value={formData.name_me} onChange={handleInputChange} />
                 <Input required={true} label={'Blog name EN'} inputName={'name_en'} value={formData.name_en} onChange={handleInputChange} />
                 <div className='relative z-[99999999999999]'>
@@ -226,8 +226,8 @@ const Page = ({ params }: ProtectedPageProps) => {
                     )}
                 </div>
 
-                <button className="mx-auto w-[160px] h-[40px] px-5 flex items-center justify-center gap-2 rounded bg-blue-600 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"> Save Changes</button>
-            </form>
+                <button onClick={handleSubmit} className="mx-auto w-[160px] h-[40px] px-5 flex items-center justify-center gap-2 rounded bg-blue-600 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"> Save Changes</button>
+            </div>
         </div>
     );
 };
