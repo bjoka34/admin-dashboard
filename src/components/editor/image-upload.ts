@@ -2,7 +2,7 @@ import { createImageUpload } from "novel/plugins";
 import { toast } from "sonner";
 
 export const onUpload = (file: File) => {
-  const promise = fetch("http://localhost:5022/api/blogs/upload", {
+  const promise = fetch("https://api.meprogram.me:5022/api/blogs/upload", {
     method: "POST",
     headers: {
       "content-type": file?.type || "application/octet-stream",
