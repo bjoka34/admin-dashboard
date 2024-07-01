@@ -10,8 +10,8 @@ const sanitizeFilename = (filename: string): string => {
   const baseName = extensionIndex !== -1 ? sanitized.substring(0, extensionIndex) : sanitized;
   const extension = extensionIndex !== -1 ? sanitized.substring(extensionIndex) : '';
 
-  // Replace spaces with underscores, and remove or replace any other unwanted characters
-  const sanitizedBaseName = baseName.replace(/[^a-zA-Z0-9_\-]/g, '_').replace(/\s+/g, '_');
+  // Replace unwanted characters with underscores, except for the last dot
+  const sanitizedBaseName = baseName.replace(/[^a-zA-Z0-9_\-]/g, '_').replace(/\./g, '_').replace(/\s+/g, '_');
 
   // Reconstruct the sanitized filename with the original extension
   return sanitizedBaseName + extension;
