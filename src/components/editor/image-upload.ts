@@ -2,8 +2,10 @@ import { createImageUpload } from "novel/plugins";
 import { toast } from "sonner";
 
 const sanitizeFilename = (filename: string): string => {
-  // Replace spaces with underscores and remove any other unwanted characters
-  return filename.replace(/[^a-zA-Z0-9_\-\.]/g, '_').replace(/\s+/g, '_');
+  // Normalize the string to decompose diacritics and remove them
+  const sanitized = filename.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  // Replace spaces with underscores, and remove or replace any other unwanted characters
+  return sanitized.replace(/[^a-zA-Z0-9_\-\.]/g, '_').replace(/\s+/g, '_');
 };
 
 export const onUpload = (file: File) => {
