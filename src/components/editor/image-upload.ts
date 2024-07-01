@@ -1,14 +1,19 @@
 import { createImageUpload } from "novel/plugins";
 import { toast } from "sonner";
 
+const sanitizeFilename = (filename: string): string => {
+  // Replace spaces with underscores and remove any other unwanted characters
+  return filename.replace(/[^a-zA-Z0-9_\-\.]/g, '_').replace(/\s+/g, '_');
+};
+
 export const onUpload = (file: File) => {
-  const filename = encodeURIComponent(file?.name || "image.png");
+  const sanitizedFilename = sanitizeFilename(file?.name || "image.png");
 
   const promise = fetch("https://api.meprogram.me:5044/api/blogs/upload", {
     method: "POST",
     headers: {
       "content-type": file?.type || "application/octet-stream",
-      "x-vercel-filename": filename
+      "x-vercel-filename": sanitizedFilename
     },
     body: file,
   });
