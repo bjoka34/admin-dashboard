@@ -4,8 +4,17 @@ import { toast } from "sonner";
 const sanitizeFilename = (filename: string): string => {
   // Normalize the string to decompose diacritics and remove them
   const sanitized = filename.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // Separate the base name and extension
+  const extensionIndex = sanitized.lastIndexOf('.');
+  const baseName = extensionIndex !== -1 ? sanitized.substring(0, extensionIndex) : sanitized;
+  const extension = extensionIndex !== -1 ? sanitized.substring(extensionIndex) : '';
+
   // Replace spaces with underscores, and remove or replace any other unwanted characters
-  return sanitized.replace(/[^a-zA-Z0-9_\-\.]/g, '_').replace(/\s+/g, '_');
+  const sanitizedBaseName = baseName.replace(/[^a-zA-Z0-9_\-]/g, '_').replace(/\s+/g, '_');
+
+  // Reconstruct the sanitized filename with the original extension
+  return sanitizedBaseName + extension;
 };
 
 export const onUpload = (file: File) => {
