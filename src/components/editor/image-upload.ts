@@ -2,11 +2,13 @@ import { createImageUpload } from "novel/plugins";
 import { toast } from "sonner";
 
 export const onUpload = (file: File) => {
+  const filename = encodeURIComponent(file?.name || "image.png");
+
   const promise = fetch("https://api.meprogram.me:5044/api/blogs/upload", {
     method: "POST",
     headers: {
       "content-type": file?.type || "application/octet-stream",
-      "x-vercel-filename": file?.name || "image.png",
+      "x-vercel-filename": filename
     },
     body: file,
   });
